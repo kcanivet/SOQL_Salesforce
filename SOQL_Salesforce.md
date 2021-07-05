@@ -7,9 +7,11 @@ When I began comparing events (classified as "Campaigns") in Salesforce, some an
 
 ### Getting Started
 There are a few tools you can use to help build your queries in Salesforce. 
-1) Object Manager (Salesforce) - To get the API name for common names in Salesforce
-2) Schema Builder (Salesforce) - To see the table connections and table elements
+1) Object Manager (Salesforce) - To get the API name for common item names in Salesforce.  For instance "Donation" is actually "Opportunity", but most items are closer.  Two word items often have spaces removed or underscores inserted to translate how it appears in Salesforce to how it is stored in the database.
+2) Schema Builder (Salesforce) - To see the table connections and table elements.  Accessed through the Object Manager.
 3) Developer Console (Salesforce) - To write the queries and preview the results
-4) Spreadsheet (I used Google Sheets with Salesforce plug-in) - To perform the actual event/campaign switch and data manipulation
+4) Spreadsheet Program (I used Google Sheets with Salesforce plug-in) - To perform the actual event/campaign switch and data manipulation
 
-The purpose of the majority of these tools is to find the items to add to your queries, what is possible to add, and getting the right syntax.  The structure of the queries does follow SQL fairly closely.
+The purpose of the majority of these tools is to find the items to add to your queries, what is possible to add based on table connections, and getting the right syntax.  The structure of the queries does follow SQL fairly closely.
+
+### The evolution of my query
