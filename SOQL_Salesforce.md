@@ -15,3 +15,34 @@ There are a few tools you can use to help build your queries in Salesforce.
 The purpose of the majority of these tools is to find the items to add to your queries, what is possible to add based on table connections, and getting the right syntax.  The structure of the queries does follow SQL fairly closely.
 
 ### The evolution of my query
+
+Yeah, we got something!  Exploring the Campaign Table
+```sql
+SELECT Name, NumberOfContacts From Campaign
+```
+![](https://github.com/kcanivet/SOQL_Salesforce/blob/main/MitoCanada_Query_Campaign1.jpg)
+
+Off to a good start, now let's focus on the Scotiabank Marathon and add in some dates
+```sql
+SELECT Name, NumberOfContacts, StartDate, EndDate From Campaign WHERE Name LIKE '%Scotiabank%'
+```
+Some of the information we need is in the Campaign table, but the donations are a key part to what we want to investigate.  Displaying the some of the record ID fields and our first record from a linked table `Campaign.Name` from the Campaign table.
+```sql
+SELECT AccountId, Amount, CampaignId, Campaign.Name From Opportunity
+```
+Adding in the Scotiabank filter using LIKE and sorting the list by event close date
+```sql
+SELECT AccountId, Amount, CloseDate, CampaignId, Campaign.Name From Opportunity WHERE Campaign.Name LIKE '%Scotiabank%' ORDER BY CloseDate
+```
+Focusing on one year at a time since we want to move donations and participants from one parent event to the individual child events by year
+```sql
+SELECT AccountId, Amount, CloseDate, CampaignId, Campaign.Name From Opportunity WHERE Campaign.Name LIKE '%Scotiabank%'AND CALENDAR_YEAR(CloseDate)=2012 ORDER BY CloseDate
+```
+After some digging, experimenting, reorganizing columns and a good dose of "Googling" we arrived at a query that contained all the info we needed to proceed to the next step. _I found out later that there was a bit a flaw in this query, but keep reading to the **Opps!** Section_
+```sql
+SELECT Id, Account.Name, AccountId, Amount, CloseDate, Campaign.Name, CampaignId From Opportunity WHERE Campaign.Name LIKE '%Scotiabank%'AND CALENDAR_YEAR(CloseDate)=2012 ORDER BY CloseDate 
+```
+![](https://github.com/kcanivet/SOQL_Salesforce/blob/main/MitoCanada_Query_Scotiabank_almost.jpg)
+
+
+
