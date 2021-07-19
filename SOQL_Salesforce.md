@@ -22,7 +22,7 @@ Yeah, we got something!  Exploring the Campaign Table
 ```sql
 SELECT Name, NumberOfContacts From Campaign
 ```
-![](https://github.com/kcanivet/SOQL_Salesforce/blob/main/MitoCanada_Query_Campaign1.jpg)
+![](https://github.com/kcanivet/SOQL_Salesforce/blob/main/MitoCanada_Query_Campaign2.jpg)
 
 Off to a good start, now let's focus on the Scotiabank Marathon and add in some dates
 ```sql
